@@ -1,0 +1,63 @@
+@use '../abstracts' as *;
+@use 'sass:map';
+
+$breakpoints: (/* 40em */ small: 400px, /* 65em */ medium: 768px, large: 992px);
+
+// 1 - @mixin mq($size) {
+//   @media (min-width: $size) {
+//     background-color: lightblue;
+//   }
+// }
+
+// 2 - Podes usarlo en todos lados sin determinar el contenido
+// @mixin mq($size) {
+//   @media (min-width: $size) {
+//     @content;
+//   }
+// }
+
+// 3 - Con un mapa
+@mixin mq($key) {
+  $size: map.get($breakpoints, $key);
+
+  @media (min-width: $size) {
+    @content;
+  }
+}
+
+// Header
+header {
+  .nav {
+    background-color: $colorNuevo;
+
+    @media screen and (max-width: 400px) {
+      // 10% rojo y el resto azul
+      background-color: mix(red, blue, 10%);
+    }
+
+    .menu {
+      list-style: none;
+    }
+
+    .item {
+      color: #111;
+    }
+
+    // @media screen and (max-width: 400px) {
+    //   color: rgb(170, 42, 42);
+    // }
+
+    // @include mq(400px);
+
+    // @include mq(400px) {
+    //   background-color: lightblue;
+    // }
+
+    @include mq(small) {
+      background-color: lightblue;
+      padding: 2em;
+    }
+  }
+}
+
+// nav-link = &-link

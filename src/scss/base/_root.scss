@@ -1,0 +1,60 @@
+@use '../abstracts' as *;
+
+html {
+  font-size: 62, 5%;
+}
+
+:root {
+  --section-spacing: 3.5rem;
+  @include mq(medium) {
+    --section-spacing: 7rem;
+  }
+
+  @each $color, $shade in $colors {
+    @each $prop, $value in $shade {
+      --clr-#{$color}-#{$prop}: #{$value};
+    }
+  }
+
+  @each $screen-size, $property in $type-scale {
+    @if $screen-size == small {
+      @each $prop, $value in $property {
+        --fs-#{$prop}: #{$value};
+      }
+    } @else {
+      @include mq(small) {
+        @each $prop, $value in $property {
+          --fs-#{$prop}: #{$value};
+        }
+      }
+    }
+  }
+}
+
+// :root {
+//   --ff-primary: #{$ff-primary};
+//   --ff-secondary: #{$ff-secondary};
+//   --ff-accent: #{$ff-accent};
+
+//   --spacer: #{$spacer};
+
+//   @each $color, $shade in $colors {
+//     @each $property, $value in $shade {
+//       --clr-#{$color}-#{$property}: #{$value};
+//     }
+//   }
+
+//   @each $screen-size, $property in $font-sizes {
+//     @if $screen-size == small {
+//       @each $prop, $value in $property {
+//         --fs-#{$prop}: #{$value};
+//       }
+//     } @else {
+//       @include mq($screen-size) {
+//         @each $prop, $value in $property {
+//           --fs-#{$prop}: #{$value};
+//         }
+//       }
+//     }
+//   }
+// }

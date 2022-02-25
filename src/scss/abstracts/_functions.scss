@@ -1,0 +1,29 @@
+.row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+$columns: 12;
+
+// Todos los div que comiencen con la clase col: [class^=col-]
+[class^='col-'] {
+  flex-basis: 100%;
+}
+
+// @media (min-width: 960px) {
+//   @for $i from 1 through $columns {
+//     .col-#{$i} {
+//       flex: 0 0 (100% / ($columns / $i));
+//     }
+
+//     .col-offset-#{$i} {
+//       margin-left: 100% / (($columns / $i));
+//     }
+//   }
+// }
+
+// Deprecation Warning: Using / for division outside of calc() is deprecated and will be removed in Dart Sass 2.0.0.
+
+// Recommendation: math.div(100%, $columns / $i) or calc(100% / ($columns / $i))
+
+// More info and automated migrator: https://sass-lang.com/d/slash-div

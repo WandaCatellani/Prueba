@@ -1,0 +1,9 @@
+@use '../layout' as *;
+
+.home {
+  background-color: #f0f0f0;
+
+  p {
+    @extend %parrafo;
+  }
+}
